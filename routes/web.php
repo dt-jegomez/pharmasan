@@ -21,5 +21,4 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/clientes', 'ClienteController@index');
-
-// Route::view('clientes', 'clientes.clientes');
+Route::get('/usuarios', 'UsuarioController@index');

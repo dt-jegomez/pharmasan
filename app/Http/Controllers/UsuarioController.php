@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class HomeController extends Controller
+class UsuarioController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -17,13 +17,13 @@ class HomeController extends Controller
     }
 
     /**
-     * Show the application dashboard.
+     * Show the application usuarios.
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function index(Request $request)
     {
-        $request->user()->authorizeRoles(['Vendedor', 'Administrador']);
-        return view('home');
+        $request->user()->authorizeRoles(['Administrador']);
+        return view('usuarios.index');
     }
 }
