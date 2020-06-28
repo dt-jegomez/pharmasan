@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Medicamento;
+use App\Exports\MedicamentoExport;
+use Maatwebsite\Excel\Facades\Excel;
 class HomeController extends Controller
 {
     /**
@@ -24,6 +26,15 @@ class HomeController extends Controller
     public function index(Request $request)
     {
         $request->user()->authorizeRoles(['Vendedor', 'Administrador']);
-        return view('home');
+        $medicamentos = Medicamento::paginate(10);
+        return view('home', compact('medicamentos'));
+    }
+
+    /**
+     * @return \Illuminate\Support\Collection
+     */
+    public function export()
+    {
+        return Excel::download(new MedicamentoExport, 'medicamentos.xlsx');
     }
 }

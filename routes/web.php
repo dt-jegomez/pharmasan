@@ -22,3 +22,4 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/clientes', 'ClienteController@index')->name('clientes');
 Route::get('/usuarios', 'UsuarioController@index')->name('usuarios');
+Route::get('/exportar', 'HomeController@export');
