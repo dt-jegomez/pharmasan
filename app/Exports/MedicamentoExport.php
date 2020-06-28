@@ -6,13 +6,15 @@ use App\Medicamento;
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\WithHeadings;
 
+
+
 class MedicamentoExport implements FromCollection, WithHeadings
 {
     public function headings(): array
     {
         return [
             '#',
-            'expedinete',
+            'expediente',
             'producto',
             'titular',
             'registro sanitario',
@@ -42,15 +44,15 @@ class MedicamentoExport implements FromCollection, WithHeadings
             'modalidad'
         ];
     }
-    /**
-    * @return \Illuminate\Support\Collection
-    */
+    
     public function collection()
     {
         try {
-            return Medicamento::get();
+            return Medicamento::query();
         } catch (\Throwable $th) {
             return $th;
         }
     }
+
+
 }

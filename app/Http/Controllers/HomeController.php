@@ -35,6 +35,9 @@ class HomeController extends Controller
      */
     public function export()
     {
+        set_time_limit(0);
+        $var = "Este Proceso puede demorar varios minutos oprima OK para confirmar";
+        echo "<script> alert('" . $var . "'); </script>";
         return Excel::download(new MedicamentoExport, 'medicamentos.xlsx');
     }
 }
